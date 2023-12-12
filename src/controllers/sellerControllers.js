@@ -2,15 +2,16 @@ const db = require("../models");
 const bcrypt = require("bcrypt");
 
 const createSeller = async (req, res) => {
-  const { name, birth, address, username, email, password, gender, phone } =
+  const { fullname, dob, address, username, email, password, gender, phone } =
     req.body;
 
   const hashedPassword = bcrypt.hashSync(password, 10);
 
+  console.log(req.body);
   try {
     const seller = await db.seller.create({
-      fullName: name,
-      dateofBirth: birth,
+      fullName: fullname,
+      dateofBirth: dob,
       address: address,
       username: username,
       email: email,
