@@ -75,7 +75,7 @@ const getSellerbyID = async (req, res) => {
 
 const updateSellerbyID = async (req, res) => {
   const { id } = req.params;
-  const { name, birth, address, username, email, password, gender, phone } =
+  const { fullname, dob, address, username, email, password, gender, phone } =
     req.body;
 
   const hashedPassword = bcrypt.hashSync(password, 10);
@@ -83,8 +83,8 @@ const updateSellerbyID = async (req, res) => {
   try {
     const seller = await db.seller.update(
       {
-        fullName: name,
-        dateofBirth: birth,
+        fullName: fullname,
+        dateofBirth: dob,
         address: address,
         username: username,
         email: email,
